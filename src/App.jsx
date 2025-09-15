@@ -93,7 +93,7 @@ export default function InfinityCareCleaning() {
                 </Typography>
                 <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
                   <Button variant="contained" color="secondary" onClick={() => go("contact")}>Request a quote</Button>
-                  <Button variant="outlined" color="primary" component={Link} href="mailto:erikaealuna@gmail.com">Email us</Button>
+                  <Button variant="outlined" color="primary" component={Link} href="mailto:Infinitycarecleaning8@gmail.com">Email us</Button>
                 </Stack>
                 <Stack direction="row" spacing={1} sx={{ mt: 1, flexWrap: "wrap", justifyContent: "center" }}>
                   <Chip label="Hospitals only" size="small" color="secondary" variant="filled" />
