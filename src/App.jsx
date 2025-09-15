@@ -17,9 +17,12 @@ import {
   Link,
   Snackbar,
   Alert,
+  IconButton,
+  Drawer,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import MenuIcon from "@mui/icons-material/Menu";
 import logoUrl from "../assets/infinity-logo.webp";
 
 // Brand palette (charcoal + electric blue)
@@ -42,12 +45,19 @@ const theme = createTheme({
 const HERO_BG = `radial-gradient(1200px circle at 0% 0%, rgba(31,41,55,.22) 0%, rgba(31,41,55,0) 40%),
                  radial-gradient(1200px circle at 100% 0%, rgba(59,130,246,.22) 0%, rgba(59,130,246,0) 40%)`;
 
-// Placeholder logo (inline SVG data URI) — shows "IC"
+// Logo image (imported file)
 const LOGO_URI = logoUrl;
 
 export default function InfinityCareCleaning() {
   const [form, setForm] = React.useState({ name: "", email: "", message: "" });
   const [sent, setSent] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const nav = [
+    { id: "home", label: "Home" },
+    { id: "services", label: "Services" },
+    { id: "contact", label: "Contact" },
+  ];
+  const handleNav = (id) => { go(id); setMobileOpen(false); };
 
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
   const onSubmit = (e) => {
@@ -64,20 +74,44 @@ export default function InfinityCareCleaning() {
       <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
         {/* Header */}
         <AppBar position="sticky" color="transparent" elevation={0} sx={{ borderBottom: 1, borderColor: "divider", bgcolor: "rgba(255,255,255,0.75)" }}>
-          <Toolbar sx={{ gap: 2 }}>
-            <Stack direction="row" spacing={1.5} alignItems="center">
-              <Box component="img" src={LOGO_URI} alt="Infinity Care Cleaning logo" sx={{ width: 36, height: 36, borderRadius: 2 }} />
-              <Typography variant="h6" sx={{ fontWeight: 800, letterSpacing: 0.3, mr: 2, color: "primary.main" }}>
-                Infinity Care Cleaning
+          <Toolbar sx={{ gap: 1, minHeight: 56, px: { xs: 1, sm: 2 } }}>
+            <Stack direction="row" spacing={1} alignItems="center" sx={{ flexGrow: 1, minWidth: 0 }}>
+              <Box component="img" src={LOGO_URI} alt="Infinity Care Cleaning logo" sx={{ width: 32, height: 32, borderRadius: 2 }} />
+              <Typography component="div" sx={{ fontWeight: 800, color: "primary.main", lineHeight: 1.1, fontSize: { xs: "1rem", sm: "1.125rem" } }}>
+                Infinity Care
+                <br />
+                Cleaning
               </Typography>
             </Stack>
-            <Stack direction="row" spacing={1} sx={{ ml: "auto" }}>
+
+            {/* Desktop nav */}
+            <Stack direction="row" spacing={1} sx={{ display: { xs: "none", md: "flex" } }}>
               <Button onClick={() => go("home")} size="small">Home</Button>
               <Button onClick={() => go("services")} size="small">Services</Button>
               <Button onClick={() => go("contact")} size="small" variant="contained" color="secondary">Contact</Button>
             </Stack>
+
+            {/* Mobile menu button */}
+            <IconButton edge="end" onClick={() => setMobileOpen(true)} sx={{ display: { xs: "inline-flex", md: "none" } }} aria-label="Open menu">
+              <MenuIcon />
+            </IconButton>
           </Toolbar>
         </AppBar>
+
+        {/* Mobile drawer */}
+        <Drawer anchor="right" open={mobileOpen} onClose={() => setMobileOpen(false)}>
+          <Box sx={{ width: 280, p: 2 }} role="presentation">
+            <Stack spacing={1.5}>
+              {nav.map((n) => (
+                <Button key={n.id} onClick={() => handleNav(n.id)} size="large">{n.label}</Button>
+              ))}
+              <Button onClick={() => handleNav("contact")} variant="contained" color="secondary" size="large">Contact</Button>
+              <Divider sx={{ my: 1 }} />
+              <Button component={Link} href="tel:+19135632866">Call (913) 563‑2866</Button>
+              <Button component={Link} href="mailto:Infinitycarecleaning8@gmail.com">Email us</Button>
+            </Stack>
+          </Box>
+        </Drawer>
 
         {/* Hero */}
         <Box id="home" sx={{ py: { xs: 6, md: 10 }, backgroundImage: HERO_BG }}>
@@ -93,7 +127,7 @@ export default function InfinityCareCleaning() {
                 </Typography>
                 <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
                   <Button variant="contained" color="secondary" onClick={() => go("contact")}>Request a quote</Button>
-                  <Button variant="outlined" color="primary" component={Link} href="mailto:Infinitycarecleaning8@gmail.com">Email us</Button>
+                  <Button variant="outlined" color="primary" component={Link} href="mailto:erikaealuna@gmail.com">Email us</Button>
                 </Stack>
                 <Stack direction="row" spacing={1} sx={{ mt: 1, flexWrap: "wrap", justifyContent: "center" }}>
                   <Chip label="Hospitals only" size="small" color="secondary" variant="filled" />
@@ -118,7 +152,7 @@ export default function InfinityCareCleaning() {
               {[
                 { t: "Operating Rooms", d: "Turnovers and terminal cleans." },
                 { t: "Isolation Rooms", d: "Contact, droplet, airborne workflows." },
-                { t: "Inpatient Units", d: "Daily/discharge cleans and high-touch disinfection." },
+                { t: "Inpatient Units", d: "Daily/discharge cleans and high‑touch disinfection." },
                 { t: "ED & Procedure", d: "Rapid response and spill/biohazard support." },
                 { t: "Clinics & Labs", d: "Benches, waiting areas, and shared equipment." },
                 { t: "Day/Night Staffing", d: "Porters, supervisors, and QA." },
@@ -157,7 +191,7 @@ export default function InfinityCareCleaning() {
               </Box>
             </Paper>
             <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-              Or call <Link href="tel:+19135632866" color="primary.main">(913) 563-2866</Link> • Midwest service area
+              Or call <Link href="tel:+19135632866" color="primary.main">(913) 563‑2866</Link> • Midwest service area
             </Typography>
           </Container>
         </Box>
