@@ -42,9 +42,20 @@ const HERO_BG = `radial-gradient(1200px circle at 0% 0%, rgba(31,41,55,.22) 0%, 
                  radial-gradient(1200px circle at 100% 0%, rgba(59,130,246,.22) 0%, rgba(59,130,246,0) 40%)`;
 
 // Placeholder logo (inline SVG data URI)
-const LOGO_URI = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'>  <defs>    <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>      <stop offset='0' stop-color='%233b82f6'/>      <stop offset='1' stop-color='%231f2937'/>    </linearGradient>  </defs>  <rect rx='14' ry='14' width='64' height='64' fill='%231f2937'/>  <rect x='2' y='2' rx='12' ry='12' width='60' height='60' fill='none' stroke='url(%23g)' stroke-width='4'/>  <text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-size='26' font-weight='700' fill='%23ffffff'>LC</text></svg>";
+const LOGO_URI = "data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'>\
+  <defs>\
+    <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>\
+      <stop offset='0' stop-color='%233b82f6'/>\
+      <stop offset='1' stop-color='%231f2937'/>\
+    </linearGradient>\
+  </defs>\
+  <rect rx='14' ry='14' width='64' height='64' fill='%231f2937'/>\
+  <rect x='2' y='2' rx='12' ry='12' width='60' height='60' fill='none' stroke='url(%23g)' stroke-width='4'/>\
+  <text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-size='26' font-weight='700' fill='%23ffffff'>LC</text>\
+</svg>";
 
-export default function App() {
+export default function LegacyCleanningInc() {
   const [form, setForm] = React.useState({ name: "", email: "", message: "" });
   const [sent, setSent] = React.useState(false);
 
