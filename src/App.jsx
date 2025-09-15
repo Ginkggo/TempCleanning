@@ -20,6 +20,7 @@ import {
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import logoUrl from "../assets/infinity-logo.webp";
 
 // Brand palette (charcoal + electric blue)
 const theme = createTheme({
@@ -41,21 +42,10 @@ const theme = createTheme({
 const HERO_BG = `radial-gradient(1200px circle at 0% 0%, rgba(31,41,55,.22) 0%, rgba(31,41,55,0) 40%),
                  radial-gradient(1200px circle at 100% 0%, rgba(59,130,246,.22) 0%, rgba(59,130,246,0) 40%)`;
 
-// Placeholder logo (inline SVG data URI)
-const LOGO_URI = "data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'>\
-  <defs>\
-    <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>\
-      <stop offset='0' stop-color='%233b82f6'/>\
-      <stop offset='1' stop-color='%231f2937'/>\
-    </linearGradient>\
-  </defs>\
-  <rect rx='14' ry='14' width='64' height='64' fill='%231f2937'/>\
-  <rect x='2' y='2' rx='12' ry='12' width='60' height='60' fill='none' stroke='url(%23g)' stroke-width='4'/>\
-  <text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-size='26' font-weight='700' fill='%23ffffff'>LC</text>\
-</svg>";
+// Placeholder logo (inline SVG data URI) — shows "IC"
+const LOGO_URI = logoUrl;
 
-export default function LegacyCleanningInc() {
+export default function InfinityCareCleaning() {
   const [form, setForm] = React.useState({ name: "", email: "", message: "" });
   const [sent, setSent] = React.useState(false);
 
@@ -76,9 +66,9 @@ export default function LegacyCleanningInc() {
         <AppBar position="sticky" color="transparent" elevation={0} sx={{ borderBottom: 1, borderColor: "divider", bgcolor: "rgba(255,255,255,0.75)" }}>
           <Toolbar sx={{ gap: 2 }}>
             <Stack direction="row" spacing={1.5} alignItems="center">
-              <Box component="img" src={LOGO_URI} alt="Legacy Cleanning Inc. logo" sx={{ width: 36, height: 36, borderRadius: 2 }} />
+              <Box component="img" src={LOGO_URI} alt="Infinity Care Cleaning logo" sx={{ width: 36, height: 36, borderRadius: 2 }} />
               <Typography variant="h6" sx={{ fontWeight: 800, letterSpacing: 0.3, mr: 2, color: "primary.main" }}>
-                Legacy Cleanning Inc.
+                Infinity Care Cleaning
               </Typography>
             </Stack>
             <Stack direction="row" spacing={1} sx={{ ml: "auto" }}>
@@ -94,7 +84,7 @@ export default function LegacyCleanningInc() {
           <Container maxWidth="md">
             <Paper elevation={0} sx={{ p: { xs: 3, md: 5 }, borderRadius: 4, textAlign: "center", background: "linear-gradient(180deg, #ffffff 0%, rgba(31,41,55,.05) 100%)", border: 1, borderColor: "primary.light" }}>
               <Stack spacing={3} alignItems="center">
-                <Box component="img" src={LOGO_URI} alt="logo" sx={{ width: 56, height: 56, borderRadius: 3, boxShadow: 1 }} />
+                <Box component="img" src={LOGO_URI} alt="Infinity Care Cleaning logo" sx={{ width: 56, height: 56, borderRadius: 3, boxShadow: 1 }} />
                 <Typography variant="h3" fontWeight={900}>
                   Hospital Cleaning Specialists
                 </Typography>
@@ -128,7 +118,7 @@ export default function LegacyCleanningInc() {
               {[
                 { t: "Operating Rooms", d: "Turnovers and terminal cleans." },
                 { t: "Isolation Rooms", d: "Contact, droplet, airborne workflows." },
-                { t: "Inpatient Units", d: "Daily/discharge cleans and high‑touch disinfection." },
+                { t: "Inpatient Units", d: "Daily/discharge cleans and high-touch disinfection." },
                 { t: "ED & Procedure", d: "Rapid response and spill/biohazard support." },
                 { t: "Clinics & Labs", d: "Benches, waiting areas, and shared equipment." },
                 { t: "Day/Night Staffing", d: "Porters, supervisors, and QA." },
@@ -167,7 +157,7 @@ export default function LegacyCleanningInc() {
               </Box>
             </Paper>
             <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-              Or call <Link href="tel:+19135632866" color="primary.main">(913) 563‑2866</Link> • Midwest service area
+              Or call <Link href="tel:+19135632866" color="primary.main">(913) 563-2866</Link> • Midwest service area
             </Typography>
           </Container>
         </Box>
@@ -176,7 +166,7 @@ export default function LegacyCleanningInc() {
         <Box component="footer" sx={{ borderTop: 1, borderColor: "divider", py: 3 }}>
           <Container>
             <Typography variant="caption" color="text.secondary">
-              © {new Date().getFullYear()} Legacy Cleanning Inc. All rights reserved.
+              © {new Date().getFullYear()} Infinity Care Cleaning. All rights reserved.
             </Typography>
           </Container>
         </Box>
